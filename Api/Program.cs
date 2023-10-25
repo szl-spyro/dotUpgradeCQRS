@@ -1,4 +1,6 @@
 using Application;
+using dotUpgradeCQRS.Infrastructure;
+using dotUpgradeCQRS.MinimalApi;
 using Infrastructure;
 using Infrastructure.Data;
 
@@ -32,4 +34,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.UseMiddleware<CustomExceptionHandler>();
+
+// map minimal api endpoints
+app.AddTodoItemsEndpoints();
+app.AddTodoListsEndpoints();
+
+await app.RunAsync();
