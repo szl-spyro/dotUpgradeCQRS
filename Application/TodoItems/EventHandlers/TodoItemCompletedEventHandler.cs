@@ -15,7 +15,7 @@ public class TodoItemCompletedEventHandler : INotificationHandler<TodoItemComple
 
     public Task Handle(TodoItemCompletedEvent notification, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("cqrsExample Domain Event: {DomainEvent}", notification.GetType().Name);
+        _logger.LogInformation("Domain Event Occured: {DomainEvent}", notification.GetType().Name);
 
         return Task.CompletedTask;
     }
